@@ -6,6 +6,29 @@ using System;
 // Add repeating patterns here!
 
 public static class Unitilities {
+    public static class Angles {
+        float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
+            return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+        }
+
+        public static float WrapAngle(float angle){
+            angle%=360;
+            if(angle >180)
+                return angle - 360;
+
+            return angle;
+        }
+
+        public static float UnwrapAngle(float angle){
+            if(angle >=0)
+                return angle;
+
+            angle = -angle%360;
+
+            return 360-angle;
+        }
+    }
+
     public class Counter {
         float _t;
 
