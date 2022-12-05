@@ -9,7 +9,7 @@ using System.Linq;
 public static class Unitilities {
     public static class Probability {
         public static bool Check(int percentage, int range = 100){ // By default this returns a 1 in 100 chance
-            int var = Random.Range(0, range + 1);
+            int var = UnityEngine.Random.Range(0, range + 1);
 
             return (var == percentage);
         }
