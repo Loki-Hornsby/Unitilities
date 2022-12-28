@@ -77,16 +77,18 @@ public static class Unitilities {
             return a | b;
         }
 
-        public static Vector3 ClampVector3(ref Vector3 value){
-            value.x = Mathf.Clamp(value.x, Min.x, Max.x);
-            value.y = Mathf.Clamp(value.y, Min.y, Max.y);
-            value.z = Mathf.Clamp(value.z, Min.z, Max.z);
+        public static Vector3 ClampVector3(Vector3 value, Vector3 min, Vector3 max){
+            value.x = Mathf.Clamp(value.x, min.x, max.x);
+            value.y = Mathf.Clamp(value.y, min.y, max.y);
+            value.z = Mathf.Clamp(value.z, min.z, max.z);
+
             return value;
         }
 
-        public static Vector2 ClampVector2(ref Vector2 value){
-            value.x = Mathf.Clamp(value.x, Min.x, Max.x);
-            value.y = Mathf.Clamp(value.y, Min.y, Max.y);
+        public static Vector2 ClampVector2(Vector2 value, Vector2 min, Vector2 max){
+            value.x = Mathf.Clamp(value.x, min.x, max.x);
+            value.y = Mathf.Clamp(value.y, min.y, max.y);
+
             return value;
         }
     }
