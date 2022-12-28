@@ -1,10 +1,15 @@
+/// <summary>
+/// Copyright 2022, Loki Alexander Button Hornsby (Loki Hornsby), All rights reserved.
+/// Licensed under the BSD 3-Clause "New" or "Revised" License
+/// </summary>
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
 
-// Add repeating patterns here!
+// Version: 28.12.22
 
 public static class Unitilities {
     public static class Probability {
@@ -47,28 +52,6 @@ public static class Unitilities {
         }
     }
 
-    public class Counter {
-        float _t;
-
-        public void Update(float input){
-            _t += input;
-        }
-
-        public void Set(float input){
-            _t = input;
-        }
-
-        public T t <T>(){
-            if (typeof(T) == typeof(int)){
-                _t = Mathf.FloorToInt(_t);
-            }
-
-            T val = (T) Convert.ChangeType(_t, typeof(T));
-
-            return val;
-        }
-    }
-
     public static class Distance {
         public static float Between2Floats(float a, float b){
             return Mathf.Abs(Mathf.Abs(a) - Mathf.Abs(b));
@@ -92,6 +75,19 @@ public static class Unitilities {
             }
 
             return a | b;
+        }
+
+        public static Vector3 ClampVector3(ref Vector3 value){
+            value.x = Mathf.Clamp(value.x, Min.x, Max.x);
+            value.y = Mathf.Clamp(value.y, Min.y, Max.y);
+            value.z = Mathf.Clamp(value.z, Min.z, Max.z);
+            return value;
+        }
+
+        public static Vector2 ClampVector2(ref Vector2 value){
+            value.x = Mathf.Clamp(value.x, Min.x, Max.x);
+            value.y = Mathf.Clamp(value.y, Min.y, Max.y);
+            return value;
         }
     }
 }
