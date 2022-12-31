@@ -66,11 +66,11 @@ public static class Unitilities {
     }
 
     public static class Maths {
-        public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float speed, float height, float t){
+        public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float speed, float height, float percentage){
             return Vector3.Lerp(
                 start,
-                end + (direction * CalculateSinOrCos(speed, height, false)),
-                t
+                end + (direction * (1f + Mathf.PingPong(t, height))),
+                percentage
             );
         }
 
