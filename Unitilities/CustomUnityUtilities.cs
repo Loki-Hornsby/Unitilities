@@ -9,7 +9,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-// Version: 28.12.22
+// Version: 31.12.22
 
 public static class Unitilities {
     public static class Probability {
@@ -49,6 +49,21 @@ public static class Unitilities {
             angle = -angle%360;
 
             return 360-angle;
+        }
+
+        public static Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t, Vector3 outDirection){
+            float parabolicT = t * 2 - 1;
+
+            Vector3 travelDirection = end - start;
+            Vector3 levelDirection = end - new Vector3(start.x, end.y, start.z);
+
+            Vector3 right = Vector3.Cross(travelDirection, levelDirection);
+            Vector3 up = outDirection;
+
+            Vector3 result = start + t * travelDirection;
+            result += ((-parabolicT * parabolicT + 1) * height) * up.normalized;
+
+            return result;
         }
     }
 
@@ -90,6 +105,19 @@ public static class Unitilities {
             value.y = Mathf.Clamp(value.y, min.y, max.y);
 
             return value;
+        }
+
+        public static float CalculateSinOrCos(float speed, float amplitude, bool cos){
+            float val = 0f;
+            float p = Time.fixedTime * Mathf.PI * speed;
+
+            if (cos){
+                val += Mathf.Cos(p);
+            } else {
+                val += Mathf.Sin(p);
+            }
+
+            return (val * amplitude);
         }
     }
 }
