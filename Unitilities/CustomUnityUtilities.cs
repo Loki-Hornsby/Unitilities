@@ -66,19 +66,12 @@ public static class Unitilities {
     }
 
     public static class Maths {
-        public static Vector3 GetCurve(Vector3 start, Vector3 end, float height, float t, Vector3 outDirection){
-            float parabolicT = t * 2 - 1;
-
-            Vector3 travelDirection = end - start;
-            Vector3 levelDirection = end - new Vector3(start.x, end.y, start.z);
-
-            Vector3 right = Vector3.Cross(travelDirection, levelDirection);
-            Vector3 up = outDirection;
-
-            Vector3 result = start + t * travelDirection;
-            result += ((-parabolicT * parabolicT + 1) * height) * up.normalized;
-
-            return result;
+        public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float speed, float height, float t){
+            return Vector3.Lerp(
+                start,
+                end + (curve * CalculateSinOrCos(speed, height, false)),
+                t
+            );
         }
 
         public static int GCD (int a, int b){
