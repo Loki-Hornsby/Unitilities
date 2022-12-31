@@ -69,7 +69,7 @@ public static class Unitilities {
         public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float speed, float height, float t){
             return Vector3.Lerp(
                 start,
-                end + (curve * CalculateSinOrCos(speed, height, false)),
+                end + (direction * CalculateSinOrCos(speed, height, false)),
                 t
             );
         }
