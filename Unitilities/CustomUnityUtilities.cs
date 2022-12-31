@@ -110,8 +110,6 @@ public static class Unitilities {
                 val += Mathf.Sin(p);
             }
 
-            bool v = true
-
             return (val * amplitude);
         }
     }
