@@ -66,10 +66,10 @@ public static class Unitilities {
     }
 
     public static class Maths {
-        public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float speed, float height, float percentage){
+        public static Vector3 GetCurve(Vector3 start, Vector3 end, Vector3 direction, float height, float percentage){
             return Vector3.Lerp(
                 start,
-                end + (direction * (1f + Mathf.PingPong(t, height))),
+                end + (direction * (1f + Mathf.PingPong(percentage, height))),
                 percentage
             );
         }
@@ -109,6 +109,8 @@ public static class Unitilities {
             } else {
                 val += Mathf.Sin(p);
             }
+
+            bool v = true
 
             return (val * amplitude);
         }
